@@ -1,5 +1,4 @@
-# game_lib
-Game Library With Vaadin
+#Game Library With Vaadin
 
 Project Using Feamework Vaadin utilizing only Java classes for the frontend side.
 
