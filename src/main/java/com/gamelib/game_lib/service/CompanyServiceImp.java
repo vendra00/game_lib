@@ -50,10 +50,10 @@ public class CompanyServiceImp implements CompanyService {
     }
 
     @Override
-    public Company createCompany(Company c) {
+    public void createCompany(Company c) {
         log.info("Create New Company - Service Call");
         try {
-            return companyRepository.save(c);
+            companyRepository.save(c);
         } catch (Exception e) {
             log.error("ERROR : " + e);
             throw new CompanyRequestException("There was a problem when creating this Company");

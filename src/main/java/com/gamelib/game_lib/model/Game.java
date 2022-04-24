@@ -32,5 +32,4 @@ public class Game extends AbstractEntity {
     private Console console;
 
 
-
 }

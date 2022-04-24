@@ -2,6 +2,7 @@ package com.gamelib.game_lib.view;
 
 import com.gamelib.game_lib.model.Company;
 import com.gamelib.game_lib.service.CompanyService;
+import com.gamelib.game_lib.service.CountryService;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -19,9 +20,12 @@ public class CompanyView extends VerticalLayout {
     Grid<Company> grid = new Grid<>(Company.class);
     TextField filterText = new TextField();
     CompanyForm form;
+    CountryService countryService;
     CompanyService companyService;
 
-    public CompanyView(CompanyService companyService) {
+
+    public CompanyView(CompanyService companyService, CountryService countryService) {
+        this.countryService = countryService;
         this.companyService = companyService;
         addClassName("company-view");
         setSizeFull();
@@ -43,7 +47,7 @@ public class CompanyView extends VerticalLayout {
     }
 
     private void configureForm() {
-        form = new CompanyForm();
+        form = new CompanyForm(countryService.getAllCountries());
         form.setWidth("25em");
         form.addListener(CompanyForm.SaveEvent.class, this::saveCompany);
         form.addListener(CompanyForm.DeleteEvent.class, this::deleteCompany);
@@ -54,6 +58,7 @@ public class CompanyView extends VerticalLayout {
         grid.addClassNames("company-grid");
         grid.setSizeFull();
         grid.setColumns("name");
+        grid.addColumn(company -> company.getCountry().getName()).setHeader("Country");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
         grid.asSingleSelect().addValueChangeListener(event -> editCompany(event.getValue()));
     }

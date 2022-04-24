@@ -13,7 +13,7 @@ public interface CompanyService {
 
     Optional<Company> getCompanyByName(String name);
 
-    Company createCompany(Company c);
+    void createCompany(Company c);
 
     void deleteCompany(Company c);
 

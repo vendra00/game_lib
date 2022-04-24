@@ -1,12 +1,14 @@
 package com.gamelib.game_lib.view;
 
 import com.gamelib.game_lib.model.Company;
+import com.gamelib.game_lib.model.Country;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.combobox.ComboBox;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -15,19 +17,26 @@ import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.shared.Registration;
 
+import java.util.List;
+
 public class CompanyForm extends FormLayout {
 
     private Company company;
     TextField name = new TextField("Company Name");
+    ComboBox<Country> country = new ComboBox<>("Country");
     Button save = new Button("Save");
     Button delete = new Button("Delete");
     Button close = new Button("Cancel");
     Binder<Company> binder = new BeanValidationBinder<>(Company.class);
 
-    public CompanyForm() {
+    public CompanyForm(List<Country> countries) {
         addClassName("company-form");
         binder.bindInstanceFields(this);
-        add(name, createButtonsLayout());
+
+        country.setItems(countries);
+        country.setItemLabelGenerator(Country::getName);
+
+        add(name, country, createButtonsLayout());
     }
 
     private Component createButtonsLayout() {
@@ -62,7 +71,7 @@ public class CompanyForm extends FormLayout {
     }
 
     public static abstract class CompanyFormEvent extends ComponentEvent<CompanyForm> {
-        private Company company;
+        private final Company company;
 
         protected CompanyFormEvent(CompanyForm source, Company company) {
             super(source, false);

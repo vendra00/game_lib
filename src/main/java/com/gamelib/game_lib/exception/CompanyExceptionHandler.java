@@ -15,8 +15,8 @@ public class CompanyExceptionHandler {
         // Create a payload containing exception details
         HttpStatus badRequest = HttpStatus.BAD_REQUEST;
         ZonedDateTime timeZone = ZonedDateTime.now(ZoneId.of("Z"));
-        CompanyException playerException = new CompanyException(e.getMessage(), badRequest, timeZone);
+        CompanyException companyException = new CompanyException(e.getMessage(), badRequest, timeZone);
         // Returns response entity
-        return new ResponseEntity<>(playerException, badRequest);
+        return new ResponseEntity<>(companyException, badRequest);
     }
 }

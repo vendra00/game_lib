@@ -52,10 +52,10 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
-    public Game createGame(Game game) {
+    public void createGame(Game game) {
         log.info("Create New Game - Service Call");
         try {
-            return gameRepository.save(game);
+            gameRepository.save(game);
         } catch (Exception e) {
             log.error("ERROR : " + e);
             throw new CompanyRequestException("There was a problem when creating this Game");

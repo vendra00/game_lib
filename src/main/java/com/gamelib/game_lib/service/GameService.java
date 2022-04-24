@@ -1,6 +1,5 @@
 package com.gamelib.game_lib.service;
 
-import com.gamelib.game_lib.model.Company;
 import com.gamelib.game_lib.model.Game;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public interface GameService {
 
     Optional<Game> getGameByName(String name);
 
-    Game createGame(Game c);
+    void createGame(Game c);
 
     void deleteGame(Game c);
 

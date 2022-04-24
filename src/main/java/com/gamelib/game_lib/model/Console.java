@@ -34,5 +34,4 @@ public class Console extends AbstractEntity{
     @Nullable
     private List<Game> games = new LinkedList<>();
 
-
 }
