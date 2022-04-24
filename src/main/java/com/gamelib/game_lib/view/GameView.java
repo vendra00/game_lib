@@ -4,6 +4,7 @@ import com.gamelib.game_lib.model.Game;
 import com.gamelib.game_lib.service.CompanyService;
 import com.gamelib.game_lib.service.ConsoleService;
 import com.gamelib.game_lib.service.GameService;
+
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -13,13 +14,21 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import org.springframework.context.annotation.Scope;
 
+import javax.annotation.security.PermitAll;
+
+
+@Scope("prototype")
+@PermitAll
+@org.springframework.stereotype.Component
 @PageTitle("Game Page")
 @Route(value="game", layout = MainLayout.class)
 public class GameView extends VerticalLayout {
-    Grid<Game> grid = new Grid<>(Game.class);
+
+    public Grid<Game> grid = new Grid<>(Game.class);
     TextField filterText = new TextField();
-    GameForm form;
+    public GameForm form;
     GameService gameService;
     CompanyService companyService;
     ConsoleService consoleService;

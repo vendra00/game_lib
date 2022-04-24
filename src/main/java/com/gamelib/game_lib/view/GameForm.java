@@ -24,12 +24,12 @@ public class GameForm extends FormLayout {
 
     private Game game;
 
-    TextField name = new TextField("Game Title");
-    TextField year = new TextField("Release Year");
-    ComboBox<Console> console = new ComboBox<>("Console");
-    ComboBox<Company> company = new ComboBox<>("Company");
+    public TextField name = new TextField("Game Title");
+    public TextField year = new TextField("Release Year");
+    public ComboBox<Console> console = new ComboBox<>("Console");
+    public ComboBox<Company> company = new ComboBox<>("Company");
 
-    Button save = new Button("Save");
+    public Button save = new Button("Save");
     Button delete = new Button("Delete");
     Button close = new Button("Cancel");
 
@@ -79,7 +79,7 @@ public class GameForm extends FormLayout {
     }
 
     public static abstract class GameFormEvent extends ComponentEvent<GameForm> {
-        private Game game;
+        private final Game game;
 
         protected GameFormEvent(GameForm source, Game game) {
             super(source, false);
