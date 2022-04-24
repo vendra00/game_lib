@@ -10,7 +10,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 @Theme(value = "flowcrmtutorial")
-@PWA(name = "Game Library App", shortName = "Game Library", offlineResources = {})
+@PWA(name = "Game Library App", shortName = "Game Library", offlineResources = {"./images/offline.png"})
 @NpmPackage(value = "line-awesome", version = "1.3.0")
 public class GameLibApplication extends SpringBootServletInitializer implements AppShellConfigurator {
 

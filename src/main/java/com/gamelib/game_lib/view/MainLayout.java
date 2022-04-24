@@ -7,8 +7,10 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.HighlightConditions;
+import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 
+@Route(value="")
 public class MainLayout extends AppLayout {
 
     public MainLayout() {
@@ -34,6 +36,8 @@ public class MainLayout extends AppLayout {
         RouterLink gameLink = new RouterLink("Game", GameView.class);
         RouterLink companyLink = new RouterLink("Company", CompanyView.class);
         RouterLink consoleLink = new RouterLink("Console", ConsoleView.class);
+
+
         gameLink.setHighlightCondition(HighlightConditions.sameLocation());
 
         addToDrawer(new VerticalLayout(gameLink, companyLink, consoleLink));
