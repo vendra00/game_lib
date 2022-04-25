@@ -12,21 +12,22 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedList;
 import java.util.List;
 
 @Entity @Getter @Setter
 public class Console extends AbstractEntity{
 
-    @NotEmpty @NotBlank
+    @NotEmpty(message = "console name is required")
     private String name;
 
-    @NotEmpty @NotBlank
+    @Size(min = 4, max = 4, message = "console year is required. ex: 2010")
     private String year;
 
     @ManyToOne
     @JoinColumn(name = "company_id")
-    @NotNull
+    @NotNull(message = "company is required")
     @JsonIgnoreProperties({"consoles"})
     private Company company;
 

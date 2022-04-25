@@ -18,8 +18,7 @@ import java.util.List;
 @Entity @Getter @Setter
 public class Company extends AbstractEntity{
 
-    @NotEmpty
-    @NotBlank
+    @NotEmpty(message = "company name is required")
     private String name;
 
     @OneToMany(mappedBy = "company")
@@ -32,7 +31,7 @@ public class Company extends AbstractEntity{
 
     @ManyToOne
     @JoinColumn(name = "country_id")
-    @NotNull
+    @NotNull(message = "country is required")
     @JsonIgnoreProperties({"companies"})
     private Country country;
 }
