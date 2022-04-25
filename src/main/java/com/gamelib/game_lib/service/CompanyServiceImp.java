@@ -23,7 +23,7 @@ public class CompanyServiceImp implements CompanyService {
         log.info("Get All Companies With Filter - Service Call");
         try {
             if (stringFilter == null || stringFilter.isEmpty()) {
-                return companyRepository.findAll();
+                return getAllCompanies();
             } else {
                 return companyRepository.search(stringFilter);
             }

@@ -23,7 +23,7 @@ public class ConsoleServiceImpl implements ConsoleService{
         log.info("Get All Consoles With Filter - Service Call");
         try {
             if (stringFilter == null || stringFilter.isEmpty()) {
-                return consoleRepository.findAll();
+                return getAllConsoles();
             } else {
                 return consoleRepository.search(stringFilter);
             }

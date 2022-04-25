@@ -24,7 +24,7 @@ public class GameServiceImpl implements GameService{
         log.info("Get All Games With Filter - Service Call");
         try {
             if (stringFilter == null || stringFilter.isEmpty()) {
-                return gameRepository.findAll();
+                return getAllGames();
             } else {
                 return gameRepository.search(stringFilter);
             }
